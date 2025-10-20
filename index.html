@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio: Firebase Firestore + DOM</title>
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <h1>Formulario de contacto - Local Storage</h1>
+    </header>
+    <main>
+        <section id="contact-form">
+            <form id="form">
+                <label for="name">Nombre:</label>
+                    <input type="text" id="name" placeholder="Nombre" required>
+                <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" placeholder="Introduce email..." required><br>
+                <label for="short-text">Mensaje:</label>
+                    <textarea id="short-text" name="short-text" placeholder="Escribe un mensaje" maxlength="300"></textarea>    
+                <label for="url">URL de la imagen:</label>
+                    <input type="url" id="url" name="url" placeholder="https://ejemplo.com/imagen.jpg" required>
+                <input type="submit" value="Enviar">  
+            </form>
+        </section>
+        <section id="button-set">
+                <button id="read-all">Todos los usuarios</button>
+                <button id="delete-all">Borrar todos</button> 
+        </section>
+        <section id="users-container">
+            <div id="users-element">
+            <!--Aquí se muestran los usuarios registrados-->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>2025 Bootcamp FullStack </p>
+        <p>Formulario de contacto - Local Storage</p>
+        <p>Cristina González Calvín</p>
+    </footer>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+
+    <script src="./script.js"></script>
+
+
+</body>
+
+</html>
