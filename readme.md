@@ -3,11 +3,11 @@
 ## 📋 Descripción del proyecto:
 
 Este proyecto es una landing page con un formulario de contacto:
-➡️ Guarda los datos de contato enviados en Firestore (Firebase)
-➡️ Muestra los datos de los contactos
-➡️ Permite borrar y editar cada contacto
-➡️ Permite borrar todos los contactos guardados
-➡️ Local Storage: guarda los datos del formulario que no haya sido rellenado/enviado del todo y permite limpiar el formulario cacheado
+- ➡️ Guarda los datos de contato enviados en Firestore (Firebase)
+- ➡️ Muestra los datos de los contactos
+- ➡️ Permite borrar y editar cada contacto
+- ➡️ Permite borrar todos los contactos guardados
+- ➡️ Local Storage: guarda los datos del formulario que no haya sido rellenado/enviado del todo y permite limpiar el formulario cacheado
 
 
 ### 🎯 Objetivos conseguidos
