@@ -1,4 +1,11 @@
-// ############################################ PASO 1: CONEXIÓN CON FIREBASE ############################################
+/* ⚙️ ESTRUCTURA:
+1️⃣PASO 1: CONEXIÓN CON FIREBASE
+2️⃣PASO 2: FUNCIONES
+3️⃣PASO 3: LOCAL STORAGE
+4️⃣PASO 4: EVENT LISTENERS
+*/
+
+// ############################################ 1️⃣ PASO 1: CONEXIÓN CON FIREBASE ############################################
 
 // Objeto de configuración de Firebase => Conexión a Firebase
 const firebaseConfig = { 
@@ -20,7 +27,7 @@ const db = firebase.firestore();
 let editingUserId = null;
 
 
-// ############################################ PASO 2: FUNCIONES ############################################
+// ################################################## 2️⃣PASO 2: FUNCIONES ##################################################
 
 // ====================================================== CREAR USUARIO ======================================================
 
@@ -171,11 +178,72 @@ function deleteAllUsers() { // => Función para eliminar TODOS los usuarios
     }
 }
 
-// ############################################ PASO 3: EVENT LISTENERS ############################################
+// ############################################ 3️⃣ PASO 3: LOCAL STORAGE ############################################
+
+function clearLocalStorage() { // => Función para limpiar el Local Storage
+    localStorage.removeItem("formData");
+}
+
+function setupClearButton() { // => Configurar el botón de limpiar formulario
+
+    if (!document.getElementById("cleanAll")) { // => Verificar si el botón ya existe para no duplicarlo
+
+        // Crea el botón para limpiar el formulario
+        const clearButton = document.createElement("button");
+        clearButton.type = "button";
+        clearButton.id = "cleanAll";
+        clearButton.textContent = "Borrar todo";
+        
+        // Insertar el botón después del botón de enviar
+        const submitButton = document.querySelector('input[type="submit"]');
+        submitButton.parentNode.appendChild(clearButton);
+        
+        // Event listener para el botón de borrar
+        clearButton.addEventListener("click", () => {
+            document.getElementById("form").reset();
+            clearLocalStorage();
+
+            // Restablecer el botón de enviar si estaba en modo edición
+            const submitButton = document.querySelector('input[type="submit"]');
+            submitButton.value = "Enviar";
+            editingUserId = null;
+            alert("Formulario limpiado correctamente");
+        });
+    }
+}
+
+
+// ############################################ 4️⃣ PASO 4: EVENT LISTENERS ############################################
 
 // 1. Espera a que TODA la página termine de cargarse antes de empezar a trabajar
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM completamente cargado, inicializando event listeners...");
+    
+    // Inicializar Local Storage
+    const form = document.getElementById("form"); // => Encuentra el formulario
+    const inputs = form.querySelectorAll("input, textarea"); // => Busca todos los campos dentro de ese formulario
+    
+    // Cargar datos guardados al iniciar
+    const savedData = JSON.parse(localStorage.getItem("formData")) || {}; // => Intenta leer lo que hay guardado, lo convierte de vuelta a objeto JS y si no hay nada guardado, usa un objeto vacío
+    inputs.forEach(input => { // => Para cada campo del formulario...
+        if (savedData[input.id]) { // => Si hay un valor guardado...
+            input.value = savedData[input.id]; // => Pon ese valor en el campo
+        }
+    });
+    
+    // Guardar datos mientras el usuario escribe
+    inputs.forEach(input => { // => Por cada campo del formulario, "escucha" cuando el usuario escribe...
+        input.addEventListener("input", () => {
+            const formData = {}; // => Crea un objeto vacío para guardar los datos
+            inputs.forEach(i => formData[i.id] = i.value); // => Guarda los datos
+            localStorage.setItem("formData", JSON.stringify(formData)); // => Convierte el objeto a JSON y lo guarda con la clave "formData"
+        });
+    });
+    
+    // Configurar botón de borrar todo (Local Storage)
+    setupClearButton();
+    
+    // Cargar usuarios
     readAllUsers();
     
     // 2. Botón de envío de formulario
@@ -228,6 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const submitButton = document.querySelector('input[type="submit"]'); // => Cambia el botón de "Guardar cambios" a "Enviar"
                 submitButton.value = "Enviar";
                 editingUserId = null; // => Avisa de que ya no se está editando a nadie
+                clearLocalStorage(); // => Limpia el Local Storage
                 readAllUsers(); // =>  Actualiza la lista de usuarios
             })
             .catch((error) => { // => Si ha habido algún error lo muestra
@@ -271,6 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Limpiar formulario después de enviar
             document.getElementById("form").reset();
+            clearLocalStorage(); // => Limpia el Local Storage
         }
     });
 

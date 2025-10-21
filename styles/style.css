@@ -1,0 +1,421 @@
+/* ========== VARIABLES Y FUENTE ========== */
+
+:root {
+    --tiffany-blue: #99ddc8ff;
+    --pistachio: #95bf74ff;
+    --asparagus: #659b5eff;
+    --fern-green: #556f44ff;
+    --dark-slate-gray: #283f3bff;
+}
+
+/* ========== HTML Y BODY ========== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #000;
+    background-color: #fff;
+}
+
+/* ========== HEADER ========== */
+
+header {
+    background: linear-gradient(135deg, var(--asparagus), var(--fern-green));
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== MAIN ========== */
+
+main {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+/* ========== FORMULARIO ========== */
+
+#contact-form {
+    background-color: var(--tiffany-blue);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* GRUPOS DE FORMULARIO */
+.form-group {
+    margin-bottom: 15px;
+}
+
+#form label {
+    font-weight: bold;
+    color: var(--dark-slate-gray);
+    font-size: 15px;
+    display: block;
+    margin-bottom: 12px; 
+    line-height: 1.2;
+}
+
+/* INPUTS FORMULARIO */
+#form input[type="text"],
+#form input[type="email"],
+#form input[type="url"],
+#form textarea {
+    border: 2px solid var(--pistachio);
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    width: 100%;
+    padding: 12px 15px;
+    margin: 0;
+    display: block;
+}
+
+#form textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+#form input:focus,
+#form textarea:focus {
+    outline: none;
+    border-color: var(--asparagus);
+    background-color: var(--tiffany-blue);
+    box-shadow: 0 0 5px rgba(101, 155, 94, 0.3);
+    transform: translateY(-1px);
+}
+
+/* BOTONES */
+
+#form input[type="submit"],
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+}
+
+#form input[type="submit"] {
+    background-color: var(--fern-green);
+    color: white;
+}
+
+#form input[type="submit"]:hover {
+    background-color: var(--asparagus);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+#cleanAll {
+    background-color: var(--pistachio);
+    color: var(--dark-slate-gray);
+}
+
+#cleanAll:hover {
+    background-color: var(--asparagus);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+#button-set {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#button-set button {
+    background-color: var(--pistachio);
+    color: var(--dark-slate-gray);
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0;
+}
+
+#button-set button:hover {
+    background-color: var(--asparagus);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* USUARIOS */
+
+#users-container {
+    margin-top: 20px;
+}
+
+#users-element {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+.user-item {
+    background: linear-gradient(135deg, var(--pistachio), var(--tiffany-blue));
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--asparagus);
+}
+
+.user-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user-item h3 {
+    color: var(--dark-slate-gray);
+    font-size: 18px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--fern-green);
+    padding-bottom: 6px;
+}
+
+.user-item p {
+    color: var(--dark-slate-gray);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+.user-item strong {
+    color: var(--fern-green);
+}
+
+.user-image {
+    width: 100%;
+    max-width: 150px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 12px 0;
+    border: 2px solid var(--asparagus);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.user-actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 70px;
+    margin-top: 0;
+}
+
+.user-actions button:first-child {
+    background-color: var(--asparagus);
+    color: #fff;
+}
+
+.user-actions button:first-child:hover {
+    background-color: var(--fern-green);
+    transform: translateY(-1px);
+}
+
+.user-actions button:last-child {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.user-actions button:last-child:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* ========== FOOTER ========== */
+
+footer {
+    background: linear-gradient(135deg, var(--fern-green), var(--dark-slate-gray));
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+footer p {
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* TABLET - 768px en adelante */
+
+@media (min-width: 768px) {
+    header {
+        padding: 25px 0;
+        margin-bottom: 25px;
+    }
+    
+    header h1 {
+        font-size: 32px;
+    }
+    
+    main {
+        padding: 0 20px;
+    }
+    
+    #contact-form {
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+    
+    .form-group {
+        margin-bottom: 18px;
+    }
+    
+    #form label {
+        font-size: 15px;
+        margin-bottom: 12px; 
+    }
+    
+    #form input[type="text"],
+    #form input[type="email"],
+    #form input[type="url"],
+    #form textarea {
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+    
+    #form textarea {
+        min-height: 90px;
+    }
+    
+    #users-element {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        padding: 18px;
+    }
+    
+    .user-item {
+        padding: 18px;
+    }
+    
+    footer {
+        padding: 25px 0;
+        margin-top: 25px;
+    }
+}
+
+/* ORDENADOR - 1024px en adelante */
+
+@media (min-width: 1024px) {
+    header {
+        padding: 30px 0;
+        margin-bottom: 30px;
+    }
+    
+    header h1 {
+        font-size: 40px;
+    }
+    
+    main {
+        max-width: 1200px;
+        padding: 0 30px;
+    }
+    
+    #contact-form {
+        padding: 30px;
+        margin-bottom: 30px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    #form label {
+        font-size: 16px;
+        margin-bottom: 12px; 
+    }
+    
+    #form input[type="text"],
+    #form input[type="email"],
+    #form input[type="url"],
+    #form textarea {
+        padding: 12px 15px;
+        font-size: 16px;
+    }
+    
+    #form textarea {
+        min-height: 100px;
+    }
+    
+    #users-element {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .user-item {
+        padding: 20px;
+    }
+    
+    .user-item h3 {
+        font-size: 20px;
+    }
+    
+    footer {
+        padding: 30px 0;
+        margin-top: 30px;
+    }
+}
